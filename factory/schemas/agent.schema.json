@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agent.schema.json",
+  "title": "AgentContract",
+  "type": "object",
+  "required": ["name", "purpose", "responsibilities", "inputs", "outputs", "tools", "model_requirements", "memory_access", "permissions", "success_criteria", "failure_conditions", "escalation_rules", "cost_limits", "time_limits", "recursion_limits"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {"type": "string"},
+    "purpose": {"type": "string"},
+    "responsibilities": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "inputs": {"type": "array", "items": {"type": "string"}},
+    "outputs": {"type": "array", "items": {"type": "string"}},
+    "tools": {"type": "array", "items": {"type": "string"}},
+    "model_requirements": {"type": "string"},
+    "memory_access": {"type": "string", "enum": ["none", "read", "read-write"]},
+    "permissions": {"type": "array", "items": {"type": "string"}},
+    "success_criteria": {"type": "array", "items": {"type": "string"}},
+    "failure_conditions": {"type": "array", "items": {"type": "string"}},
+    "escalation_rules": {"type": "array", "items": {"type": "string"}},
+    "cost_limits": {"type": "object"},
+    "time_limits": {"type": "object"},
+    "recursion_limits": {"type": "object"}
+  }
+}

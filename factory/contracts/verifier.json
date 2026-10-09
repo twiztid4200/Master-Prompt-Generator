@@ -1,0 +1,44 @@
+{
+  "name": "verifier",
+  "purpose": "Challenge the scout report against the same evidence.",
+  "responsibilities": [
+    "Check that the goal was answered",
+    "Reject unsupported facts",
+    "Record missing information instead of filling it in",
+    "Return only PASS or FAIL"
+  ],
+  "inputs": [
+    "goal",
+    "scout report",
+    "tool evidence"
+  ],
+  "outputs": [
+    "verdict"
+  ],
+  "tools": [],
+  "model_requirements": "any provider implementing the complete() interface; mock is sufficient for planning",
+  "memory_access": "none",
+  "permissions": [
+    "read-evidence"
+  ],
+  "success_criteria": [
+    "verdict is PASS or FAIL",
+    "each fail names a finding"
+  ],
+  "failure_conditions": [
+    "verdict repeats the scout with no challenge"
+  ],
+  "escalation_rules": [
+    "ask the operator before any write outside factory/memory and factory/runs"
+  ],
+  "cost_limits": {
+    "max_provider_calls": 1,
+    "max_usd": null
+  },
+  "time_limits": {
+    "max_seconds": 30
+  },
+  "recursion_limits": {
+    "max_iterations": 1
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "scout",
+  "purpose": "Research a goal and separate fact, inference, and recommendation.",
+  "responsibilities": [
+    "Use only declared tools",
+    "Attach a source to every finding",
+    "Do not treat missing data as a negative fact",
+    "Do not recommend implementing its own plan in the same run"
+  ],
+  "inputs": [
+    "goal",
+    "tool evidence"
+  ],
+  "outputs": [
+    "scout report"
+  ],
+  "tools": [
+    "github_readonly"
+  ],
+  "model_requirements": "any provider implementing the complete() interface; mock is sufficient for planning",
+  "memory_access": "read",
+  "permissions": [
+    "network-read",
+    "github-public-read"
+  ],
+  "success_criteria": [
+    "every finding has evidence and a source URL",
+    "kinds are explicit"
+  ],
+  "failure_conditions": [
+    "finding has no source",
+    "tool error swallowed"
+  ],
+  "escalation_rules": [
+    "ask the operator before any write outside factory/memory and factory/runs"
+  ],
+  "cost_limits": {
+    "max_provider_calls": 1,
+    "max_usd": null
+  },
+  "time_limits": {
+    "max_seconds": 30
+  },
+  "recursion_limits": {
+    "max_iterations": 1
+  }
+}

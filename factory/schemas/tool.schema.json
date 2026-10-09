@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tool.schema.json",
+  "title": "ToolDeclaration",
+  "type": "object",
+  "required": ["name", "purpose", "input_schema", "output_schema", "permissions", "reads_or_modifies", "executes_code", "network", "resource_limits", "failure_behavior", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {"type": "string"},
+    "purpose": {"type": "string"},
+    "input_schema": {"type": "object"},
+    "output_schema": {"type": "object"},
+    "permissions": {"type": "array", "items": {"type": "string"}},
+    "reads_or_modifies": {"type": "string", "enum": ["read", "modify"]},
+    "executes_code": {"type": "boolean"},
+    "network": {"type": "string"},
+    "resource_limits": {"type": "object"},
+    "failure_behavior": {"type": "string"},
+    "provenance": {"type": "string"}
+  }
+}

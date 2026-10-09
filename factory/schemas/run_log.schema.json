@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "run_log.schema.json",
+  "title": "RunLog",
+  "type": "object",
+  "required": ["goal", "workflow", "actions", "result", "confidence", "usage", "elapsed_ms", "iteration", "stop_reason"],
+  "additionalProperties": true,
+  "properties": {
+    "goal": {"type": "string"},
+    "workflow": {"type": "object"},
+    "actions": {"type": "array"},
+    "result": {"type": "string"},
+    "confidence": {"type": ["number", "null"]},
+    "usage": {"type": "object"},
+    "elapsed_ms": {"type": "number"},
+    "iteration": {"type": "integer"},
+    "stop_reason": {"type": "string"}
+  }
+}

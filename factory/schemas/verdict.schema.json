@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "verdict.schema.json",
+  "title": "VerifierVerdict",
+  "type": "object",
+  "required": ["verdict", "reasons", "challenges", "unsupported_claims", "missing_information"],
+  "additionalProperties": false,
+  "properties": {
+    "verdict": {"type": "string", "enum": ["PASS", "FAIL"]},
+    "reasons": {"type": "array", "items": {"type": "string"}},
+    "challenges": {"type": "array", "items": {"type": "string"}},
+    "unsupported_claims": {"type": "array", "items": {"type": "string"}},
+    "missing_information": {"type": "array", "items": {"type": "string"}}
+  }
+}
