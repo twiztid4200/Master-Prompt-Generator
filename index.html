@@ -51,7 +51,7 @@
             <!-- Center / Right: Search (full width on mobile) -->
             <div class="flex-1 max-w-xs md:max-w-md mx-4 md:mx-0">
                 <div class="relative">
-                    <input id="search-input" type="text" placeholder="Describe what you need..." oninput="smartPrecursorSearch()" class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 rounded-3xl py-2.5 px-5 text-sm placeholder:text-purple-400 outline-none transition-colors">
+                    <input id="search-input" type="text" placeholder="Search categories..." oninput="smartPrecursorSearch()" class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 rounded-3xl py-2.5 px-5 text-sm placeholder:text-purple-400 outline-none transition-colors">
                     <span class="absolute right-4 top-1/2 -translate-y-1/2 text-purple-400">🔎</span>
                 </div>
             </div>
@@ -117,7 +117,7 @@
                             Why This Prompt Generator Is Like None Other
                         </h2>
                         <p class="text-purple-200 text-base sm:text-lg max-w-md mx-auto mb-6">
-                            500 hand-crafted professional master prompts. Smart precursor search. Persistent Favorites. Instant Grok integration.
+                            500 hand-crafted professional master prompts. Category title and description search. Persistent Favorites. Instant Grok handoff.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
                             <button onclick="randomMasterPrompt()" class="group w-full sm:w-auto px-7 py-4 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 rounded-3xl font-medium text-base flex items-center justify-center gap-x-3 active:scale-95 shadow-2xl">
@@ -201,7 +201,7 @@
 <div onclick="if(event.target.id === 'about-modal') hideAboutModal()" id="about-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-xl z-[10000] flex items-center justify-center">
     <div onclick="event.stopImmediatePropagation()" class="bg-zinc-900 max-w-md w-full mx-4 rounded-3xl p-8 border border-purple-500/30">
         <h2 class="title-font text-4xl mb-6">Master Awakening</h2>
-        <p class="text-purple-100">500 professional master prompts engineered for real results. Smart precursor search, persistent Favorites, and instant Grok integration.</p>
+        <p class="text-purple-100">500 professional master prompts engineered for real results. Search matches category titles and descriptions, not prompt text. Favorites persist in this browser. Grok opens in a new tab.</p>
         <button onclick="hideAboutModal()" class="mt-10 w-full py-4 bg-purple-600 hover:bg-purple-500 rounded-3xl font-medium active:scale-95">RETURN TO THE LIBRARY</button>
     </div>
 </div>

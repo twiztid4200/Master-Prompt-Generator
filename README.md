@@ -39,3 +39,14 @@ Requires Python 3.10 or newer. No third-party packages.
 ## REA
 
 See `docs/rea-evaluation.md`. REA is not a dependency of this repository.
+
+
+## Phase 1.1
+
+Search matches category title and description only. It is case-insensitive substring matching, not prompt-text search and not fuzzy search.
+
+Hard limits default to 0.05 USD, 20,000 input tokens, 4,000 output tokens, 60 seconds, 6 provider calls, and 2 retries. A missing token count is null, not zero.
+
+No live model key was present in this environment. The HTTP adapter is tested with an injected transport. A live-model mission was not run.
+
+Local rollback tag `phase1-rollback-d8a0d7e` points at `d8a0d7ecd1652f635f3660f61e640e48ab238a52` and is not pushed.

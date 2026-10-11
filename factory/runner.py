@@ -9,10 +9,11 @@ from factory.agents.scout import report as scout_report
 from factory.agents.verifier import review
 from factory.memory import write_discovery, write_run
 from factory.tools.github_readonly import inspect_repository
+from factory.limits import DEFAULT_LIMITS, check_limits
 from factory.validate import load_schema, validate
 
 
-def run_mission(goal: str, owner: str, repo: str, provider, root: Path, transport=None) -> dict:
+def run_mission(goal: str, owner: str, repo: str, provider, root: Path, transport=None, limits=None, starting_commit_sha=None) -> dict:
     started = time.perf_counter()
     workflow = plan(goal, provider)
     errors = validate(workflow, load_schema("workflow.schema.json"))
@@ -29,6 +30,7 @@ def run_mission(goal: str, owner: str, repo: str, provider, root: Path, transpor
         raise ValueError("verdict invalid: " + "; ".join(verdict_errors))
     elapsed_ms = round((time.perf_counter() - started) * 1000, 3)
     usage = provider.usage()
+    check_limits(usage, elapsed_ms, limits)
     if not evidence.get("ok"):
         stop_reason = "tool-failure"
     elif verdict["verdict"] == "PASS":
@@ -48,6 +50,15 @@ def run_mission(goal: str, owner: str, repo: str, provider, root: Path, transpor
         "usage": usage,
         "elapsed_ms": elapsed_ms,
         "iteration": 1,
+        "live": bool(usage.get("live")),
+        "model": usage.get("model") or provider.name,
+        "starting_commit_sha": starting_commit_sha,
+        "retry_count": usage.get("retry_count") or 0,
+        "input_tokens": usage.get("input_tokens"),
+        "output_tokens": usage.get("output_tokens"),
+        "estimated_cost": usage.get("estimated_cost_usd"),
+        "cost_method": usage.get("estimation_method"),
+        "limits": limits or DEFAULT_LIMITS,
         "approval_decisions": ["no implementation approved in this run"],
         "continuation_rationale": "not continued; recursion limit is 1",
         "stop_reason": stop_reason,
