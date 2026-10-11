@@ -24,7 +24,7 @@ It plans with one Scout and one Verifier, reads public GitHub metadata, writes a
 
 - No license file. The owner has not approved one.
 - No hosted API and no browser-side model calls
-- No real model provider. The mock reports token usage as unavailable.
+- HTTP provider exists but is opt-in. No live-model mission has been run.
 - No MCP server, no REA install, no binary analysis
 - No swarm and no recursive loop beyond one iteration
 
@@ -41,9 +41,16 @@ Requires Python 3.10 or newer. No third-party packages.
 See `docs/rea-evaluation.md`. REA is not a dependency of this repository.
 
 
-## Phase 1.1
+## Phase 1.2
 
-Search matches category title and description only. It is case-insensitive substring matching, not prompt-text search and not fuzzy search.
+The CLI still defaults to the mock provider. A real network call requires all of:
+
+```
+PROVIDER_API_KEY=... python3 -m factory awaken --provider http --approve-unknown-cost
+```
+
+Do not put the key in the command line, the browser, a commit, or a log. The HTTP adapter has no pre-call price table, so unknown cost stays null. `--approve-unknown-cost` accepts a reserve of 0.01 USD per live call against the 0.05 USD ceiling. Limits are checked before and after each provider call. Retries are capped at 2. A live-model mission has not been run on this branch.
+
 
 Hard limits default to 0.05 USD, 20,000 input tokens, 4,000 output tokens, 60 seconds, 6 provider calls, and 2 retries. A missing token count is null, not zero.
 

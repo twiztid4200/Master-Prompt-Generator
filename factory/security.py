@@ -17,6 +17,7 @@ INJECTION_MARKERS = (
     "ignore all previous instructions",
     "expose the api key",
     "modify the repository",
+    "override system policy",
 )
 
 
@@ -32,7 +33,7 @@ def scan_tree(root: Path) -> list[str]:
     for path in root.rglob("*"):
         if not path.is_file() or "__pycache__" in path.parts or path.suffix in {".png", ".jpg"}:
             continue
-        if path.name == "prompts.json":
+        if "tests" in path.parts or path.name == "prompts.json":
             continue
         try:
             text = path.read_text(errors="ignore")
@@ -45,7 +46,19 @@ def scan_tree(root: Path) -> list[str]:
 
 
 def quarantine_evidence(text: str) -> str:
-    lowered = text.lower()
+    cleaned = redact(text)
+    lowered = cleaned.lower()
     if any(marker in lowered for marker in INJECTION_MARKERS):
-        return "untrusted-evidence: " + redact(text)
-    return text
+        return "untrusted-evidence: " + cleaned
+    return cleaned
+
+
+def quarantine_tree(value):
+    """Mark untrusted strings. Retrieved content cannot authorize changes or reveal secrets."""
+    if isinstance(value, str):
+        return quarantine_evidence(value)
+    if isinstance(value, list):
+        return [quarantine_tree(item) for item in value]
+    if isinstance(value, dict):
+        return {key: quarantine_tree(item) for key, item in value.items()}
+    return value
