@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 from pathlib import Path
 
 from factory.providers.mock import MockProvider
@@ -18,7 +19,8 @@ def main(argv=None) -> int:
     parser.add_argument("--owner", default="twiztid4200")
     parser.add_argument("--repo", default="Master-Prompt-Generator")
     args = parser.parse_args(argv)
-    record = run_mission(args.goal, args.owner, args.repo, MockProvider(), ROOT)
+    sha = subprocess.run(['git','rev-parse','HEAD'], cwd=ROOT, capture_output=True, text=True).stdout.strip() or None
+    record = run_mission(args.goal, args.owner, args.repo, MockProvider(), ROOT, starting_commit_sha=sha)
     print(json.dumps({
         "id": record["id"],
         "result": record["result"],

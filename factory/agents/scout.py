@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from factory.security import quarantine_evidence
+
 
 def report(goal: str, evidence: dict, provider) -> dict:
     source = evidence.get("source_url") or evidence.get("api_url") or ""
@@ -25,7 +27,7 @@ def report(goal: str, evidence: dict, provider) -> dict:
             "id": "single-entry",
             "kind": "fact",
             "statement": f"The repository exposes {evidence.get('file_count')} git tree entries and its declared language is {evidence.get('language')}.",
-            "evidence": f"paths={paths}; language={evidence.get('language')}; size_kb={evidence.get('size_kb')}",
+            "evidence": quarantine_evidence(f"paths={paths}; language={evidence.get('language')}; size_kb={evidence.get('size_kb')}"),
             "source_url": source,
             "confidence": 1,
             "license": evidence.get("license"),

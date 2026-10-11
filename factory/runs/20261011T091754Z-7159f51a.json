@@ -1,0 +1,226 @@
+{
+  "goal": "Analyze the MASTER AWAKENING repository and recommend the single highest-value next improvement, using independently verifiable evidence.",
+  "workflow": {
+    "goal": "Analyze the MASTER AWAKENING repository and recommend the single highest-value next improvement, using independently verifiable evidence.",
+    "stages": [
+      "plan",
+      "execute",
+      "verify",
+      "remember",
+      "stop"
+    ],
+    "agents": [
+      "scout",
+      "verifier"
+    ],
+    "stop_conditions": [
+      "verifier returns PASS or FAIL",
+      "one iteration only",
+      "stop on tool failure",
+      "do not implement the recommendation in this run"
+    ],
+    "recursion_limit": 1,
+    "budget": {
+      "max_provider_calls": 3,
+      "max_usd": null
+    }
+  },
+  "actions": [
+    {
+      "agent": "architect",
+      "action": "plan"
+    },
+    {
+      "agent": "scout",
+      "tool": "github_readonly",
+      "ok": true
+    },
+    {
+      "agent": "verifier",
+      "action": "review"
+    }
+  ],
+  "result": "PASS",
+  "confidence": 0.7,
+  "usage": {
+    "provider": "mock",
+    "calls": 3,
+    "input_tokens": null,
+    "output_tokens": null,
+    "available": false,
+    "estimation_method": "unavailable \u2014 mock provider does not report token usage",
+    "estimated_cost_usd": null
+  },
+  "elapsed_ms": 100.937,
+  "iteration": 1,
+  "live": false,
+  "model": "mock",
+  "starting_commit_sha": "d8a0d7ecd1652f635f3660f61e640e48ab238a52",
+  "retry_count": 0,
+  "input_tokens": null,
+  "output_tokens": null,
+  "estimated_cost": null,
+  "cost_method": "unavailable \u2014 mock provider does not report token usage",
+  "limits": {
+    "max_usd": 0.05,
+    "max_input_tokens": 20000,
+    "max_output_tokens": 4000,
+    "max_seconds": 60,
+    "max_provider_calls": 6,
+    "max_retries": 2
+  },
+  "approval_decisions": [
+    "no implementation approved in this run"
+  ],
+  "continuation_rationale": "not continued; recursion limit is 1",
+  "stop_reason": "verifier-pass",
+  "evidence": {
+    "ok": true,
+    "source_url": "https://github.com/twiztid4200/Master-Prompt-Generator",
+    "api_url": "https://api.github.com/repos/twiztid4200/Master-Prompt-Generator",
+    "full_name": "twiztid4200/Master-Prompt-Generator",
+    "description": "Master prompt generator to help you\u2019re awakening journey ",
+    "default_branch": "main",
+    "pushed_at": "2026-10-09T17:56:50Z",
+    "language": "HTML",
+    "license": null,
+    "has_pages": true,
+    "size_kb": 151,
+    "file_count": 66,
+    "paths": [
+      ".gitignore",
+      "README.md",
+      "data",
+      "data/prompts.json",
+      "docs",
+      "docs/rea-evaluation.md",
+      "factory",
+      "factory/__init__.py",
+      "factory/__main__.py",
+      "factory/agents",
+      "factory/agents/__init__.py",
+      "factory/agents/architect.py",
+      "factory/agents/scout.py",
+      "factory/agents/verifier.py",
+      "factory/cli.py",
+      "factory/contracts",
+      "factory/contracts/architect.json",
+      "factory/contracts/scout.json",
+      "factory/contracts/verifier.json",
+      "factory/memory.py",
+      "factory/memory",
+      "factory/memory/agents",
+      "factory/memory/agents/README.md",
+      "factory/memory/artifacts",
+      "factory/memory/artifacts/README.md",
+      "factory/memory/decisions",
+      "factory/memory/decisions/README.md",
+      "factory/memory/decisions/rea-integrate-later.md",
+      "factory/memory/discoveries",
+      "factory/memory/discoveries/20261009T175639Z-46b3c212.md",
+      "factory/memory/failures",
+      "factory/memory/failures/README.md",
+      "factory/memory/knowledge",
+      "factory/memory/knowledge/README.md",
+      "factory/memory/lessons",
+      "factory/memory/lessons/README.md",
+      "factory/memory/policies",
+      "factory/memory/policies/README.md",
+      "factory/memory/policies/untrusted-input.md",
+      "factory/memory/projects",
+      "factory/memory/projects/master-awakening.md",
+      "factory/memory/workflows",
+      "factory/memory/workflows/README.md",
+      "factory/providers",
+      "factory/providers/__init__.py",
+      "factory/providers/base.py",
+      "factory/providers/mock.py",
+      "factory/runner.py",
+      "factory/runs",
+      "factory/runs/.gitkeep",
+      "factory/runs/20261009T175639Z-46b3c212.json",
+      "factory/schemas",
+      "factory/schemas/agent.schema.json",
+      "factory/schemas/run_log.schema.json",
+      "factory/schemas/scout_report.schema.json",
+      "factory/schemas/tool.schema.json",
+      "factory/schemas/verdict.schema.json",
+      "factory/schemas/workflow.schema.json",
+      "factory/tools",
+      "factory/tools/__init__.py",
+      "factory/tools/github_readonly.py",
+      "factory/tools/registry.py",
+      "factory/validate.py",
+      "index.html",
+      "tests",
+      "tests/test_factory.py"
+    ],
+    "tree_truncated": false,
+    "private": false
+  },
+  "report": {
+    "goal": "Analyze the MASTER AWAKENING repository and recommend the single highest-value next improvement, using independently verifiable evidence.",
+    "agent": "scout",
+    "provider": "mock",
+    "unknowns": [
+      "Prompt text quality was not re-graded in this run.",
+      "No model-provider price was measured because the mock provider reports no tokens."
+    ],
+    "findings": [
+      {
+        "id": "single-entry",
+        "kind": "fact",
+        "statement": "The repository exposes 66 git tree entries and its declared language is HTML.",
+        "evidence": "paths=['.gitignore', 'README.md', 'data', 'data/prompts.json', 'docs', 'docs/rea-evaluation.md', 'factory', 'factory/__init__.py', 'factory/__main__.py', 'factory/agents', 'factory/agents/__init__.py', 'factory/agents/architect.py', 'factory/agents/scout.py', 'factory/agents/verifier.py', 'factory/cli.py', 'factory/contracts', 'factory/contracts/architect.json', 'factory/contracts/scout.json', 'factory/contracts/verifier.json', 'factory/memory.py', 'factory/memory', 'factory/memory/agents', 'factory/memory/agents/README.md', 'factory/memory/artifacts', 'factory/memory/artifacts/README.md', 'factory/memory/decisions', 'factory/memory/decisions/README.md', 'factory/memory/decisions/rea-integrate-later.md', 'factory/memory/discoveries', 'factory/memory/discoveries/20261009T175639Z-46b3c212.md', 'factory/memory/failures', 'factory/memory/failures/README.md', 'factory/memory/knowledge', 'factory/memory/knowledge/README.md', 'factory/memory/lessons', 'factory/memory/lessons/README.md', 'factory/memory/policies', 'factory/memory/policies/README.md', 'factory/memory/policies/untrusted-input.md', 'factory/memory/projects', 'factory/memory/projects/master-awakening.md', 'factory/memory/workflows', 'factory/memory/workflows/README.md', 'factory/providers', 'factory/providers/__init__.py', 'factory/providers/base.py', 'factory/providers/mock.py', 'factory/runner.py', 'factory/runs', 'factory/runs/.gitkeep', 'factory/runs/20261009T175639Z-46b3c212.json', 'factory/schemas', 'factory/schemas/agent.schema.json', 'factory/schemas/run_log.schema.json', 'factory/schemas/scout_report.schema.json', 'factory/schemas/tool.schema.json', 'factory/schemas/verdict.schema.json', 'factory/schemas/workflow.schema.json', 'factory/tools', 'factory/tools/__init__.py', 'factory/tools/github_readonly.py', 'factory/tools/registry.py', 'factory/validate.py', 'index.html', 'tests', 'tests/test_factory.py']; language=HTML; size_kb=151",
+        "source_url": "https://github.com/twiztid4200/Master-Prompt-Generator",
+        "confidence": 1,
+        "license": null,
+        "maintenance": "last push 2026-10-09T17:56:50Z",
+        "security": "Public metadata only. No file was executed.",
+        "relevance": "The factory has to extend this repository, not replace a backend that is not in the tree."
+      },
+      {
+        "id": "pages",
+        "kind": "fact",
+        "statement": "GitHub reports that Pages is enabled for this repository.",
+        "evidence": "has_pages=true",
+        "source_url": "https://github.com/twiztid4200/Master-Prompt-Generator",
+        "confidence": 1,
+        "license": null,
+        "maintenance": null,
+        "security": "Pages output is public. Do not publish secrets beside the site.",
+        "relevance": "The free-tier library can stay on Pages. The agent loop cannot."
+      },
+      {
+        "id": "local-engine",
+        "kind": "recommendation",
+        "statement": "Keep the static library and add a local CLI factory. Do not put provider credentials in the browser, and do not apply this recommendation in the same run.",
+        "evidence": "Derived from the public tree and Pages flag. Not a claim that a backend already exists.",
+        "source_url": "https://github.com/twiztid4200/Master-Prompt-Generator",
+        "confidence": 0.7,
+        "license": null,
+        "maintenance": null,
+        "security": "A browser agent would expose keys. A local CLI keeps them out of Pages.",
+        "relevance": "Analyze the MASTER AWAKENING repository and recommend the single highest-value next improvement, using independently verifiable evidence."
+      }
+    ]
+  },
+  "verdict": {
+    "verdict": "PASS",
+    "reasons": [
+      "Facts cite the tool payload and the recommendation is labeled as a recommendation.",
+      "The run is forbidden from implementing that recommendation."
+    ],
+    "challenges": [
+      "A single public tree does not prove the site still renders after extraction.",
+      "License is reported only if GitHub metadata includes it; absence is not a license grant."
+    ],
+    "unsupported_claims": [],
+    "missing_information": [
+      "Prompt text quality was not re-graded in this run.",
+      "No model-provider price was measured because the mock provider reports no tokens.",
+      "Repository license is unset or not a recognized SPDX id."
+    ]
+  },
+  "id": "20261011T091754Z-7159f51a"
+}
