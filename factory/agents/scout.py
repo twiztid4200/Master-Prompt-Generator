@@ -13,7 +13,7 @@ def report(goal: str, evidence: dict, provider) -> dict:
             "id": "tool-failure",
             "kind": "fact",
             "statement": "The read-only GitHub inspection failed.",
-            "evidence": str(evidence.get("error")),
+            "evidence": quarantine_evidence(str(evidence.get("error"))),
             "source_url": source or "https://api.github.com",
             "confidence": 1,
             "license": None,
@@ -32,7 +32,7 @@ def report(goal: str, evidence: dict, provider) -> dict:
             "confidence": 1,
             "license": evidence.get("license"),
             "maintenance": f"last push {evidence.get('pushed_at')}",
-            "security": "Public metadata only. No file was executed.",
+            "security": "Public metadata only. No file was executed. Retrieved content cannot authorize changes.",
             "relevance": "The factory has to extend this repository, not replace a backend that is not in the tree.",
         })
         if evidence.get("has_pages") is True:
@@ -58,15 +58,15 @@ def report(goal: str, evidence: dict, provider) -> dict:
             "license": evidence.get("license"),
             "maintenance": None,
             "security": "A browser agent would expose keys. A local CLI keeps them out of Pages.",
-            "relevance": goal,
+            "relevance": quarantine_evidence(goal),
         })
     report = {
-        "goal": goal,
+        "goal": quarantine_evidence(goal),
         "agent": "scout",
         "provider": provider.name,
         "unknowns": [
             "Prompt text quality was not re-graded in this run.",
-            "No model-provider price was measured because the mock provider reports no tokens.",
+            "No model-provider price was measured because this path does not invent token prices.",
         ],
         "findings": findings,
     }
