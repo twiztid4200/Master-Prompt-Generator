@@ -10,6 +10,12 @@ python3 -m factory awaken "Analyze the MASTER AWAKENING repository and determine
 
 It plans with one Scout and one Verifier, reads public GitHub metadata, writes a markdown discovery and a run log, then stops. It does not implement the Scout recommendation in the same run.
 
+## Dashboard (MVP)
+
+A local-first command center lives at `dashboard/index.html`. It provides observability over the factory, roadmap, and related projects without executing agents or calling providers. See `dashboard/README.md`.
+
+Run locally with `python3 -m http.server` then open `/dashboard/`.
+
 ## Implemented
 
 - Prompt library extracted and still counted at 500 / 20
@@ -19,6 +25,7 @@ It plans with one Scout and one Verifier, reads public GitHub metadata, writes a
 - Read-only GitHub tool
 - CLI mission, markdown memory, run log
 - Tests in `tests/test_factory.py`
+- Dashboard MVP (this branch)
 
 ## Not implemented
 
