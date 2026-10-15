@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASTER AWAKENING — Command Center</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>MASTER AWAKENING Command Center</h1>
+    <nav>
+      <button data-section="overview" class="active" onclick="showSection('overview')">Overview</button>
+      <button data-section="roadmap" onclick="showSection('roadmap')">Roadmap</button>
+      <button data-section="agent-ops" onclick="showSection('agent-ops')">Agent Ops</button>
+      <button data-section="income" onclick="showSection('income')">Income</button>
+      <button data-section="knowledge" onclick="showSection('knowledge')">Knowledge</button>
+      <button data-section="karma" onclick="showSection('karma')">Karma ArKade</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="overview" class="active"></section>
+    <section id="roadmap"></section>
+    <section id="agent-ops"></section>
+    <section id="income"></section>
+    <section id="knowledge"></section>
+    <section id="karma"></section>
+
+    <form id="task-form" style="display:none;" class="card">
+      <h3>Edit Task</h3>
+      <input type="hidden" id="task-id">
+      <label>Title <input id="task-title" required></label><br>
+      <label>Project <input id="task-project" required></label><br>
+      <label>Status
+        <select id="task-status">
+          <option>planned</option>
+          <option>in-progress</option>
+          <option>blocked</option>
+          <option>complete</option>
+          <option>verified</option>
+        </select>
+      </label><br>
+      <label>Evidence reference <input id="task-evidence"></label><br>
+      <label>Notes <textarea id="task-notes"></textarea></label><br>
+      <button type="submit" class="primary">Save</button>
+      <button type="button" id="cancel-task">Cancel</button>
+      <p class="empty">Verification status is set only when status is explicitly "verified". Marking complete does not auto-verify.</p>
+    </form>
+  </main>
+
+  <footer>
+    Local-first dashboard. Reads factory run logs read-only. Edits stay in this browser's localStorage.<br>
+    Baseline labeled from main@4c30b03. No secrets, no execution, no external APIs.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
