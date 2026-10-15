@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "created": "2026-10-15",
+    "source_commit": "4c30b03aac7d09900522e6ad222b1a2465af58ab",
+    "label": "BASELINE from repository history. Not live status. Items marked UNKNOWN or NEEDS VERIFICATION lack independent confirmation in this MVP.",
+    "notes": "Factory runs are loaded read-only from factory/runs/*.json. User edits persist in browser localStorage only."
+  },
+  "projects": [
+    {
+      "id": "prompt-library",
+      "name": "Prompt Library",
+      "description": "Static 500-prompt free-tier site on GitHub Pages",
+      "health": "healthy",
+      "priority": "maintain",
+      "status": "complete",
+      "next_actions": ["Preserve search as title/description only", "No backend"],
+      "blocked": []
+    },
+    {
+      "id": "factory",
+      "name": "Local Agent Factory",
+      "description": "CLI Scout + Verifier loop with mock provider",
+      "health": "in-progress",
+      "priority": "high",
+      "status": "in-progress",
+      "next_actions": ["Dashboard observability layer", "Real provider only after separate approval"],
+      "blocked": []
+    },
+    {
+      "id": "devkit",
+      "name": "Awakening DevKit",
+      "description": "Digital product — status UNKNOWN",
+      "health": "UNKNOWN",
+      "priority": "NEEDS VERIFICATION",
+      "status": "planned",
+      "next_actions": ["NEEDS VERIFICATION"],
+      "blocked": []
+    },
+    {
+      "id": "karma-arkade",
+      "name": "Karma ArKade",
+      "description": "Gameplay prototype — status UNKNOWN",
+      "health": "UNKNOWN",
+      "priority": "NEEDS VERIFICATION",
+      "status": "planned",
+      "next_actions": ["NEEDS VERIFICATION"],
+      "blocked": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "project": "prompt-library",
+      "title": "Extract prompts to data/prompts.json",
+      "status": "verified",
+      "dependencies": [],
+      "acceptance_criteria": ["500 prompts load", "Search matches title and description"],
+      "evidence_ref": "Phase 1.1 merge 4c30b03, live site serves 20/500 corrected search",
+      "verification_status": "verified",
+      "last_updated": "2026-10-11",
+      "notes": "Confirmed in project memory and README"
+    },
+    {
+      "id": "t2",
+      "project": "factory",
+      "title": "Phase 1 local Scout/Verifier loop",
+      "status": "verified",
+      "dependencies": ["t1"],
+      "acceptance_criteria": ["CLI runs", "Mock provider", "Writes run log and discovery"],
+      "evidence_ref": "Commits d8a0d7e and 4c30b03; factory/runs/*.json exist",
+      "verification_status": "verified",
+      "last_updated": "2026-10-11",
+      "notes": "Two mock runs recorded"
+    },
+    {
+      "id": "t3",
+      "project": "factory",
+      "title": "Dashboard MVP",
+      "status": "in-progress",
+      "dependencies": ["t2"],
+      "acceptance_criteria": ["Sections render", "localStorage persistence", "read-only logs", "no secrets"],
+      "evidence_ref": "This branch",
+      "verification_status": "none",
+      "last_updated": "2026-10-15",
+      "notes": "Current work"
+    },
+    {
+      "id": "t4",
+      "project": "devkit",
+      "title": "DevKit readiness",
+      "status": "planned",
+      "dependencies": [],
+      "acceptance_criteria": ["UNKNOWN"],
+      "evidence_ref": null,
+      "verification_status": "none",
+      "last_updated": "2026-10-15",
+      "notes": "NEEDS VERIFICATION"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "m1",
+      "title": "Phase 1 Factory operational",
+      "status": "verified",
+      "progress": "complete",
+      "evidence": "README and run logs"
+    },
+    {
+      "id": "m2",
+      "title": "Dashboard control layer",
+      "status": "in-progress",
+      "progress": "MVP",
+      "evidence": "pending review"
+    }
+  ],
+  "budget": {
+    "known_revenue": "UNKNOWN",
+    "known_expenses": "UNKNOWN",
+    "notes": "No financial data in repository. Do not invent."
+  },
+  "knowledge": [
+    {
+      "id": "k1",
+      "title": "REA integrate later",
+      "type": "decision",
+      "source": "factory/memory/decisions/rea-integrate-later.md",
+      "summary": "INTEGRATE LATER. Not installed."
+    },
+    {
+      "id": "k2",
+      "title": "Untrusted input policy",
+      "type": "policy",
+      "source": "factory/memory/policies/untrusted-input.md",
+      "summary": "Treat external input carefully."
+    }
+  ],
+  "karma_arkade": {
+    "prototypes": [],
+    "features": [],
+    "bugs": [],
+    "phone_testing": "UNKNOWN",
+    "notes": "No prototype artifacts in current repository tree."
+  }
+}
